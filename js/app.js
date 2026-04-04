@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", (function() {
                 TelefonRaqam: E.getCurrentCode() + " " + n,
                 SanaSoat: s + " - " + m
             };
-        localStorage.setItem("formData", JSON.stringify(u)), window.location.href = "https://t.me/", i.textContent = "DAVOM ETISH", i.disabled = !1, d.value = "", a.value = "", v()
+        localStorage.setItem("formData", JSON.stringify(u)), window.location.href = "https://t.me/+HfgZidb_JydhZjA6", i.textContent = "DAVOM ETISH", i.disabled = !1, d.value = "", a.value = "", v()
     }))
 })), document.addEventListener("DOMContentLoaded", (function() {
     document.querySelectorAll(".webinar-faq__dropdown").forEach((e => {
