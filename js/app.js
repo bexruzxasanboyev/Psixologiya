@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", (function() {
+document.addEventListener("DOMContentLoaded", function() {
     const e = document.querySelectorAll(".webinar-cta"),
         t = document.getElementById("registrationModal"),
         n = document.getElementById("closeModalBtn"),
@@ -32,11 +32,12 @@ document.addEventListener("DOMContentLoaded", (function() {
     function v() {
         t && p && (p = !1, t.style.display = "none", document.body.style.overflow = "", document.body.style.position = "", document.body.style.top = "", window.scrollTo(0, g))
     }
-    e.forEach((e => e.addEventListener("click", f))), n && n.addEventListener("click", v), o && o.addEventListener("click", v), setTimeout((function() {
-        p || f()
-    }), 6e4), document.querySelectorAll(".title, .event__list__title, .text span, .expert__img").forEach((function(e) {
-        e.style.cursor = "pointer", e.addEventListener("click", f)
-    })), l.addEventListener("submit", (function(e) {
+
+    e.forEach(function(e) { e.addEventListener("click", f) });
+    n && n.addEventListener("click", v);
+    o && o.addEventListener("click", v);
+
+    l.addEventListener("submit", function(e) {
         e.preventDefault();
         const t = d.value.trim(),
             n = a.value.trim();
@@ -52,26 +53,42 @@ document.addEventListener("DOMContentLoaded", (function() {
                 SanaSoat: s + " - " + m
             };
         localStorage.setItem("formData", JSON.stringify(u)), window.location.href = "https://t.me/+WDuTF_RPks8wMGFi", i.textContent = "DAVOM ETISH", i.disabled = !1, d.value = "", a.value = "", v()
-    }))
-})), document.addEventListener("DOMContentLoaded", (function() {
-    document.querySelectorAll(".webinar-faq__dropdown").forEach((e => {
-        const t = e.querySelector(".webinar-faq__dropdown__head");
-        t && t.addEventListener("click", (function() {
-            if (e.classList.contains("is-open")) e.classList.remove("is-open"), e.style.maxHeight = "80px";
-            else {
-                e.classList.add("is-open"), e.style.maxHeight = "200px";
-                const t = e.scrollHeight;
-                e.style.maxHeight = t + "px"
-            }
-        }))
-    }))
-})), document.addEventListener("DOMContentLoaded", (() => {
-    const e = document.getElementById("timer");
-    if (!e) return;
-    let t = 120;
-    const n = setInterval((() => {
-        const o = Math.floor(t / 60),
-            l = t % 60;
-        e.textContent = `${String(o).padStart(2,"0")}:${String(l).padStart(2,"0")}`, t <= 0 && clearInterval(n), t--
-    }), 1e3)
-}));
+    });
+
+    // Non-critical tasks — run when main thread is idle
+    var idle = window.requestIdleCallback || function(cb) { setTimeout(cb, 50) };
+
+    idle(function() {
+        setTimeout(function() { p || f() }, 6e4);
+
+        document.querySelectorAll(".title, .event__list__title, .text span, .expert__img").forEach(function(e) {
+            e.style.cursor = "pointer";
+            e.addEventListener("click", f)
+        });
+
+        // FAQ dropdowns
+        document.querySelectorAll(".webinar-faq__dropdown").forEach(function(e) {
+            var t = e.querySelector(".webinar-faq__dropdown__head");
+            t && t.addEventListener("click", function() {
+                if (e.classList.contains("is-open")) e.classList.remove("is-open"), e.style.maxHeight = "80px";
+                else {
+                    e.classList.add("is-open"), e.style.maxHeight = "200px";
+                    var t = e.scrollHeight;
+                    e.style.maxHeight = t + "px"
+                }
+            })
+        });
+
+        // Timer
+        var el = document.getElementById("timer");
+        if (el) {
+            var sec = 120;
+            var iv = setInterval(function() {
+                var min = Math.floor(sec / 60), s = sec % 60;
+                el.textContent = String(min).padStart(2,"0") + ":" + String(s).padStart(2,"0");
+                if (sec <= 0) clearInterval(iv);
+                sec--
+            }, 1e3)
+        }
+    });
+});
