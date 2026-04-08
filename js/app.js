@@ -33,7 +33,10 @@ document.addEventListener("DOMContentLoaded", function() {
         t && p && (p = !1, t.style.display = "none", document.body.style.overflow = "", document.body.style.position = "", document.body.style.top = "", window.scrollTo(0, g))
     }
 
-    e.forEach(function(e) { e.addEventListener("click", f) });
+    e.forEach(function(e) { e.addEventListener("click", function() {
+        f();
+        if (typeof fbq === "function") fbq('track', 'Contact');
+    }) });
     n && n.addEventListener("click", v);
     o && o.addEventListener("click", v);
 
@@ -52,6 +55,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 TelefonRaqam: E.getCurrentCode() + " " + n,
                 SanaSoat: s + " - " + m
             };
+        if (typeof fbq === "function") fbq('track', 'Lead', {
+            content_name: 'Webinar Registration',
+            content_category: 'Psixologiya'
+        });
         localStorage.setItem("formData", JSON.stringify(u)), window.location.href = "https://t.me/+e1jh_ZVfWokwOGNi", i.textContent = "DAVOM ETISH", i.disabled = !1, d.value = "", a.value = "", v()
     });
 
