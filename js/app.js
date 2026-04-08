@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 TelefonRaqam: E.getCurrentCode() + " " + n,
                 SanaSoat: s + " - " + m
             };
-        localStorage.setItem("formData", JSON.stringify(u)), window.location.href = "https://t.me/+WDuTF_RPks8wMGFi", i.textContent = "DAVOM ETISH", i.disabled = !1, d.value = "", a.value = "", v()
+        localStorage.setItem("formData", JSON.stringify(u)), window.location.href = "https://t.me/+e1jh_ZVfWokwOGNi", i.textContent = "DAVOM ETISH", i.disabled = !1, d.value = "", a.value = "", v()
     });
 
     // Non-critical tasks — run when main thread is idle
