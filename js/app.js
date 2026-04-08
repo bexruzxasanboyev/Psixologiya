@@ -59,7 +59,17 @@ document.addEventListener("DOMContentLoaded", function() {
             content_name: 'Webinar Registration',
             content_category: 'Psixologiya'
         });
-        localStorage.setItem("formData", JSON.stringify(u)), window.location.href = "https://t.me/+e1jh_ZVfWokwOGNi", i.textContent = "DAVOM ETISH", i.disabled = !1, d.value = "", a.value = "", v()
+        var fd = new FormData();
+        fd.append("sheetName", "Lead");
+        fd.append("Ism", u.Ism);
+        fd.append("Telefon raqam", u.TelefonRaqam);
+        fd.append("Royhatdan o'tgan vaqti", u.SanaSoat);
+        window.location.href = "https://t.me/+e1jh_ZVfWokwOGNi"
+        fetch("https://script.google.com/macros/s/AKfycbxUnvnE3PVxjoWsk7hyBUUMuhRY-01-um2UeyKtZOedUfULDVFCli5p_JZT849JJTMSJA/exec", {
+            method: "POST",
+            body: fd
+        })
+        i.textContent = "YUBORILMOQDA...", i.disabled = !0
     });
 
     // Non-critical tasks — run when main thread is idle
@@ -84,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     e.style.maxHeight = t + "px"
                 }
             })
-        });
+        }); 
 
         // Timer
         var el = document.getElementById("timer");
