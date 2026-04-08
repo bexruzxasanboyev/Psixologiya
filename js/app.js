@@ -55,10 +55,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 TelefonRaqam: E.getCurrentCode() + " " + n,
                 SanaSoat: s + " - " + m
             };
-        if (typeof fbq === "function") fbq('track', 'Lead', {
-            content_name: 'Webinar Registration',
-            content_category: 'Psixologiya'
-        });
         var fd = new FormData();
         fd.append("sheetName", "Lead");
         fd.append("Ism", u.Ism);
