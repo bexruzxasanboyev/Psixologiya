@@ -72,13 +72,6 @@ document.addEventListener("DOMContentLoaded", function() {
     var idle = window.requestIdleCallback || function(cb) { setTimeout(cb, 50) };
 
     idle(function() {
-        setTimeout(function() { p || f() }, 6e4);
-
-        document.querySelectorAll(".title, .event__list__title, .text span, .expert__img").forEach(function(e) {
-            e.style.cursor = "pointer";
-            e.addEventListener("click", f)
-        });
-
         // FAQ dropdowns
         document.querySelectorAll(".webinar-faq__dropdown").forEach(function(e) {
             var t = e.querySelector(".webinar-faq__dropdown__head");
@@ -90,18 +83,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     e.style.maxHeight = t + "px"
                 }
             })
-        }); 
-
-        // Timer
-        var el = document.getElementById("timer");
-        if (el) {
-            var sec = 120;
-            var iv = setInterval(function() {
-                var min = Math.floor(sec / 60), s = sec % 60;
-                el.textContent = String(min).padStart(2,"0") + ":" + String(s).padStart(2,"0");
-                if (sec <= 0) clearInterval(iv);
-                sec--
-            }, 1e3)
-        }
+        });
     });
 });
